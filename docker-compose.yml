@@ -2,13 +2,52 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mlb-pitcher-analyzer
     volumes:
+      # アプリケーションコードをマウント（ホットリロード対応）
       - .:/app
-    ports:
-      - "8050:8050"  # Dashアプリケーション用
+      # データディレクトリを永続化
+      - mlb_data:/app/data
+      # ログディレクトリを永続化
+      - mlb_logs:/app/logs
     environment:
-      - ENVIRONMENT=development
-      - LOG_LEVEL=DEBUG
-    command: >
-      bash -c "python -m mlb_pitcher_analyzer"
+      - ENV=development
+      - LOG_LEVEL=INFO
+      - CONFIG_MLB_API_RATE_LIMIT_MS=500
+      - CONFIG_DATA_COLLECTION_BACKUP_INTERVAL_DAYS=7
+    # コンテナ起動後もコンテナを維持
+    tty: true
+    stdin_open: true
+    # データベースが必要になったら以下のように依存関係を設定できます
+    # depends_on:
+    #   - db
+
+    # 将来的に必要になれば以下のようなサービスを追加できます
+    # db:
+    #   image: postgres:14-alpine
+    #   environment:
+    #     - POSTGRES_USER=postgres
+    #     - POSTGRES_PASSWORD=postgres
+    #     - POSTGRES_DB=mlb_data
+    #   volumes:
+    #     - postgres_data:/var/lib/postgresql/data
+
+    # 可視化UI用のサービス（フェーズ4で追加予定）
+    # dashboard:
+    #   build:
+    #     context: ./dashboard
+    #     dockerfile: Dockerfile
+    #   ports:
+    #     - "8050:8050"
+    #   volumes:
+    #     - ./dashboard:/app
+    #     - mlb_data:/data
+    #   depends_on:
+    #     - app
+
+volumes:
+  mlb_data:
+  mlb_logs: # postgres_data:

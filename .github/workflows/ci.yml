@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: 1.4.2
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    
+    - name: Install dependencies
+      run: |
+        poetry install
+    
+    - name: Lint with flake8
+      run: |
+        poetry run flake8 mlb_pitcher_analyzer tests
+    
+    - name: Format check with black
+      run: |
+        poetry run black --check mlb_pitcher_analyzer tests
+    
+    - name: Import check with isort
+      run: |
+        poetry run isort --check-only mlb_pitcher_analyzer tests
+    
+    - name: Type check with mypy
+      run: |
+        poetry run mypy mlb_pitcher_analyzer
+    
+    - name: Test with pytest
+      run: |
+        poetry run pytest tests --cov=mlb_pitcher_analyzer --cov-report=xml
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml

@@ -1,10 +1,13 @@
-# Python関連
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# C extensions
 *.so
+
+# Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -16,33 +19,82 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# 仮想環境
-venv/
-ENV/
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
-# ノートブック
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
 .ipynb_checkpoints
 
-# MacOS関連
-.DS_Store
+# pyenv
+.python-version
 
-# エディタ関連
-.idea/
-.vscode/
-*.swp
-*.swo
+# celery beat schedule file
+celerybeat-schedule
 
-# 環境変数
+# SageMath parsed files
+*.sage.py
+
+# Environments
 .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# キャッシュ
-.cache/
+# Spyder project settings
+.spyderproject
+.spyproject
 
-# データファイル（必要に応じて）
-*.csv
-*.json
+# Rope project settings
+.ropeproject
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Database files
+*.db
 *.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Data files (optional, uncomment if needed)
+# data/raw/
+# data/processed/
+# data/backups/
+
+# Config files with secrets
+config/*.json
+.token_cache.json

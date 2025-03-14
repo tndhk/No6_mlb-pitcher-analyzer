@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "mlb-pitcher-analyzer"
+version = "0.1.0"
+description = "MLB投手パフォーマンス分析ツール"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.0.0"
+numpy = "^1.24.0"
+matplotlib = "^3.7.0"
+plotly = "^5.14.0"
+dash = "^2.9.0"
+requests = "^2.28.0"
+pyyaml = "^6.0"
+tqdm = "^4.65.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3.1"
+black = "^23.3.0"
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+mypy = "^1.2.0"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
