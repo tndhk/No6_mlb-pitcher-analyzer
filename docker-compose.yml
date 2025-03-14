@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  mlb-analyzer:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8050:8050"  # Dash/Flaskアプリ用
+      - "8888:8888"  # Jupyter Lab用
+    environment:
+      - PYTHONPATH=/app

@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# データファイル
+*.csv
+*.json
+!sample_data/*.csv
+!sample_data/*.json
+
+# 環境設定
+.env
+.venv
+venv/
+ENV/
+.env.local
+
+# エディタ設定
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS固有
+.DS_Store
+Thumbs.db
