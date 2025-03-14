@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8050:8050"  # Dashアプリケーション用
+    environment:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+    command: >
+      bash -c "python -m mlb_pitcher_analyzer"

@@ -1,0 +1,48 @@
+# Python関連
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 仮想環境
+venv/
+ENV/
+
+# ノートブック
+.ipynb_checkpoints
+
+# MacOS関連
+.DS_Store
+
+# エディタ関連
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 環境変数
+.env
+
+# キャッシュ
+.cache/
+
+# データファイル（必要に応じて）
+*.csv
+*.json
+*.sqlite
